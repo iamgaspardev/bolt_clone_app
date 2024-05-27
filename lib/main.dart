@@ -1,3 +1,4 @@
+import 'package:bolt_clone_app/pages/home.dart';
 import 'package:bolt_clone_app/pages/landing_page.dart';
 import 'package:flutter/material.dart';
 
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
         primaryColor: Color(0xFF34BB78),
         useMaterial3: true,
       ),
-      home: Landingpage(),
+      home: HomePage(),
     );
   }
 }
