@@ -8,12 +8,13 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Bolt Clone App',
-       theme: ThemeData(
-        primaryColor: Color(0xFF34BB78),
+      title: 'Pickme_app',
+      theme: ThemeData(
+        primaryColor: Colors.red,
         useMaterial3: true,
       ),
       home: HomePage(),
