@@ -1,10 +1,11 @@
+import 'package:bolt_clone_app/pages/search_route.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class MapPage extends StatefulWidget {
-  final VoidCallback onDrawerPressed; // Function to open drawer
+  final VoidCallback onDrawerPressed;
 
-  MapPage({required this.onDrawerPressed}); // Add this in the constructor
+  MapPage({required this.onDrawerPressed});
 
   @override
   _MapPageState createState() => _MapPageState();
@@ -52,28 +53,59 @@ class _MapPageState extends State<MapPage> {
                   controller: scrollController,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.all(16.0),
+                      padding: const EdgeInsets.only(
+                          left: 16.0, right: 16.0, bottom: 16.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
-                            "Where to?",
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          ElevatedButton.icon(
-                            onPressed: widget.onDrawerPressed,
-                            icon: Icon(Icons.schedule, color: Colors.red),
-                            label: Text(
-                              "Schedule",
-                              style: TextStyle(color: Colors.red),
-                            ),
-                            style: ElevatedButton.styleFrom(
-                              foregroundColor: Colors.red,
-                              backgroundColor: Colors.white,
-                              elevation: 0,
+                          Expanded(
+                            child: Container(
+                              padding: EdgeInsets.symmetric(horizontal: 8.0),
+                              decoration: BoxDecoration(
+                                color: Colors.red.withOpacity(0.4),
+                                borderRadius: BorderRadius.circular(8.0),
+                              ),
+                              child: Row(
+                                children: [
+                                  Expanded(
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => SearchRoute(),
+                                          ),
+                                        );
+                                      },
+                                      child: TextField(
+                                        enabled: false,
+                                        decoration: InputDecoration(
+                                          border: InputBorder.none,
+                                          hintText: 'Where to?',
+                                          hintStyle: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 16,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  ElevatedButton.icon(
+                                    onPressed: widget.onDrawerPressed,
+                                    icon:
+                                        Icon(Icons.schedule, color: Colors.red),
+                                    label: Text(
+                                      "Schedule",
+                                      style: TextStyle(color: Colors.red),
+                                    ),
+                                    style: ElevatedButton.styleFrom(
+                                      foregroundColor: Colors.red,
+                                      backgroundColor: Colors.white,
+                                      elevation: 0,
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ],
